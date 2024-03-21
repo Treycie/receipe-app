@@ -20,7 +20,8 @@ export default function Receipes() {
   const getReceipes = () => {
     setLoading(true);
     // prepare URL
-    const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
+    // const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
+    const url = new URL("http://localhost:4000/recipes");
     url.searchParams.append(
       "apiKey",
       process.env.REACT_APP_SPOONACULAR_API_KEY
@@ -31,7 +32,8 @@ export default function Receipes() {
       .then((response) => response.json())
       .then((data) => {
         // update the receipes state
-        setReceipes(data.results);
+        // setReceipes(data.results);
+        setReceipes(data);
         // console.log(data);
       })
       .catch((error) => {
@@ -59,7 +61,7 @@ export default function Receipes() {
           <img src={loadingIcon} />
         ) : receipes.length > 0 ? (
           receipes.map((receipe) => (
-            <Grid key={receipe.id} item xs={4}>
+            <Grid key={receipe._id} item xs={4}>
               <Card sx={{ maxWidth: 345, height: "100%" }}>
                 <CardActionArea sx={{ height: "100%" }}>
                   <CardMedia
@@ -69,7 +71,7 @@ export default function Receipes() {
                     alt={receipe.title}
                   />
                   <CardContent>
-                    <Link to={`/receipes/${receipe.id}`}>
+                    <Link to={`/receipes/${receipe._id}`}>
                       <Typography gutterBottom variant="h5" component="div">
                         {receipe.title}
                       </Typography>
