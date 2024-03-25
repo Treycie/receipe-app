@@ -9,14 +9,12 @@ const router = createBrowserRouter([
   { path: "/", element: <Receipes /> },
   { path: "/receipes", element: <Receipes /> },
   { path: "/receipes/:id", element: <Receipe /> },
-  {path:   "/addrecipe",element:<AddRecipe/>   },
+  {path:   "/add-recipe",element:<AddRecipe/>   },
 ]);
 
 function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
+  return ( <RouterProvider router={router} />
+   
   );
 }
 

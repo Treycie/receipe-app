@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import empty from "../../assets/images/empty.svg";
 import loadingIcon from "../../assets/images/loadingIcon.svg";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar";
 
 export default function Receipes() {
   const [receipes, setReceipes] = useState([]);
@@ -21,12 +22,12 @@ export default function Receipes() {
     setLoading(true);
     // prepare URL
     // const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
-    const url = new URL("http://localhost:4000/recipes");
-    url.searchParams.append(
-      "apiKey",
-      process.env.REACT_APP_SPOONACULAR_API_KEY
-    );
-    url.searchParams.append("query", keyword);
+    const url = new URL(`${process.env.REACT_APP_RECIPE_API_URL}/recipes`);
+    // url.searchParams.append(
+    //   "apiKey",
+    //   process.env.REACT_APP_SPOONACULAR_API_KEY
+    // );
+    // url.searchParams.append("query", keyword);
     // fetch receipes from API
     fetch(url)
       .then((response) => response.json())
@@ -45,6 +46,8 @@ export default function Receipes() {
   useEffect(getReceipes, [keyword]);
 
   return (
+   <>
+   <Navbar />
     <Container sx={{ my: "2rem" }}>
       <TextField
         fullWidth
@@ -90,5 +93,6 @@ export default function Receipes() {
         )}
       </Grid>
     </Container>
+   </>
   );
 }

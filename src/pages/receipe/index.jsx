@@ -16,7 +16,7 @@ return fetch(url).then(response => response.json());
 
 export default function Receipe() {
   const { id } = useParams();
-  const {data,isLoading, } = useSWR(`https://api.spoonacular.com/recipes/${id}/information`, getReceipe);
+  const {data,isLoading, } = useSWR(`${process.env.REACT_APP_RECIPE_API_URL}/recipes/${id}`, getReceipe);
   // console.log(data, isLoading);
 
 
