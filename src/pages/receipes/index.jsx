@@ -70,7 +70,7 @@ export default function Receipes() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={receipe.image}
+                    image={`${process.env.REACT_APP_RECIPE_API_URL}/images/${receipe.image}`}
                     alt={receipe.title}
                   />
                   <CardContent>
